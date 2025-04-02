@@ -28,72 +28,7 @@ interface RossStandardData {
 }
 
 const rossStandardData: RossStandardData[] = [
-  {
-    day: 0,
-    weightGram: 44,
-    weightKg: 0.044,
-    dailyWeightGainGram: 0,
-    avgDailyWeightGainGram: 0,
-    feedConsumptionGram: 0,
-    cumulativeFeedGram: 0,
-    cumulativeFeedKg: 0,
-    feedConversionRatio: 0,
-    waterConsumptionLiter: 0.3,
-    mortalityCount: 0
-  },
-  {
-    day: 1,
-    weightGram: 62,
-    weightKg: 0.062,
-    dailyWeightGainGram: 18,
-    avgDailyWeightGainGram: 18,
-    feedConsumptionGram: 12.2,
-    cumulativeFeedGram: 12.2,
-    cumulativeFeedKg: 0.0122,
-    feedConversionRatio: 0.197,
-    waterConsumptionLiter: 0.5,
-    mortalityCount: 1
-  },
-  {
-    day: 2,
-    weightGram: 81,
-    weightKg: 0.081,
-    dailyWeightGainGram: 19,
-    avgDailyWeightGainGram: 18.5,
-    feedConsumptionGram: 16.3,
-    cumulativeFeedGram: 28.5,
-    cumulativeFeedKg: 0.0285,
-    feedConversionRatio: 0.352,
-    waterConsumptionLiter: 0.5,
-    mortalityCount: 1
-  },
-  // روزهای 3 تا 54 به همین صورت...
-  {
-    day: 55,
-    weightGram: 4230,
-    weightKg: 4.23,
-    dailyWeightGainGram: 88,
-    avgDailyWeightGainGram: 76,
-    feedConsumptionGram: 233,
-    cumulativeFeedGram: 7496.5,
-    cumulativeFeedKg: 7.4965,
-    feedConversionRatio: 1.772,
-    waterConsumptionLiter: 1.8,
-    mortalityCount: 2
-  },
-  {
-    day: 56,
-    weightGram: 4318,
-    weightKg: 4.318,
-    dailyWeightGainGram: 88,
-    avgDailyWeightGainGram: 76,
-    feedConsumptionGram: 234,
-    cumulativeFeedGram: 7730.5,
-    cumulativeFeedKg: 7.7305,
-    feedConversionRatio: 1.790,
-    waterConsumptionLiter: 1.8,
-    mortalityCount: 2
-  }
+  // ... existing data
 ];
 
 const HallDetail: React.FC = () => {
@@ -137,7 +72,7 @@ const HallDetail: React.FC = () => {
   const standardDataForCurrentDay = rossStandardData.find(data => data.day === currentDay) || {} as RossStandardData;
 
   return (
-    <div>
+    <div className="hall-detail-container">
       <h2>Hall Details for Hall {hallId}</h2>
       <div className="day-navigation">
         <Button onClick={goToPreviousDay} disabled={currentDay === 1}>Previous Day</Button>
