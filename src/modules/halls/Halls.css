@@ -1,0 +1,27 @@
+.card-box {
+    width: 200px;
+    height: 200px;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 20px;
+  }
+  
+  .add-icon {
+    font-size: 50px;
+    color: #ccc;
+  }
+  
+  .halls-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .hall-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    width: 200px;
+  }

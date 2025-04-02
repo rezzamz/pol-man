@@ -1,0 +1,27 @@
+.chart-container {
+    margin-top: 20px;
+    position: relative;
+    height: 200px;
+    width: 300px;
+  }
+  .day-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .charts {
+    margin-top: 20px;
+  }
+  
+  .chart-container {
+    margin-top: 20px;
+    position: relative;
+    height: 200px;
+    width: 300px;
+  }
+  
+  .ant-input-group-addon {
+    color: #999;
+  }
