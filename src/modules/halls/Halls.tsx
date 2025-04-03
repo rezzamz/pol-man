@@ -18,7 +18,7 @@ const Halls: React.FC = () => {
     const newHall = { ...values, id: halls.length + 1 };
     setHalls([...halls, newHall]);
     setIsModalVisible(false);
-    navigate(`/dashboard/halls/${newHall.id}`);
+    navigate(`/dashboard/halls/${newHall.id}`, { state: { budgetType: values.budgetType } });
   };
 
   const handleCancel = () => {
@@ -52,6 +52,12 @@ const Halls: React.FC = () => {
           <Form.Item name="initialWeight" label="Initial Weight" rules={[{ required: true, message: 'Please input the initial weight!' }]}>
             <Input type="number" />
           </Form.Item>
+          <Form.Item name="budgetType" label="Budget Type" rules={[{ required: true, message: 'Please select the budget type!' }]}>
+            <Select placeholder="Select a budget type">
+              <Option value="standard">Standard</Option>
+              <Option value="premium">Premium</Option>
+            </Select>
+          </Form.Item>
           <Form.Item>
             <Button type="primary" htmlType="submit">
               Submit
@@ -67,7 +73,7 @@ const Halls: React.FC = () => {
             <p>Number of Chickens: {hall.chickenCount}</p>
             <p>Type of Chickens: {hall.chickenType}</p>
             <p>Initial Weight: {hall.initialWeight} kg</p>
-            <Button onClick={() => navigate(`/dashboard/halls/${hall.id}`)}>View Details</Button>
+            <Button onClick={() => navigate(`/dashboard/halls/${hall.id}`, { state: { budgetType: hall.budgetType } })}>View Details</Button>
           </div>
         ))}
       </div>

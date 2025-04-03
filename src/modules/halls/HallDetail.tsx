@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useLocation } from 'react-router-dom';
 import { Button, Form, Input } from 'antd';
 import { Line } from 'react-chartjs-2';
 import 'chart.js/auto';
@@ -31,10 +31,25 @@ const rossStandardData: RossStandardData[] = [
   // ... existing data
 ];
 
+const premiumStandardData: RossStandardData[] = [
+  // ... premium data
+];
+
 const HallDetail: React.FC = () => {
   const { hallId } = useParams<{ hallId: string }>();
+  const location = useLocation();
+  const { budgetType } = (location.state as any) || { budgetType: 'standard' };
   const [dailyData, setDailyData] = useState<DailyData[]>([]);
   const [currentDay, setCurrentDay] = useState(1);
+  const [standardData, setStandardData] = useState<RossStandardData[]>(rossStandardData);
+
+  useEffect(() => {
+    if (budgetType === 'premium') {
+      setStandardData(premiumStandardData);
+    } else {
+      setStandardData(rossStandardData);
+    }
+  }, [budgetType]);
 
   const handleDailySubmit = (values: DailyData) => {
     const updatedDailyData = [...dailyData.filter(data => data.day !== currentDay), { ...values, day: currentDay }];
@@ -69,7 +84,7 @@ const HallDetail: React.FC = () => {
   };
 
   const dailyDataForCurrentDay = getDailyDataForDay(currentDay);
-  const standardDataForCurrentDay = rossStandardData.find(data => data.day === currentDay) || {} as RossStandardData;
+  const standardDataForCurrentDay = standardData.find(data => data.day === currentDay) || {} as RossStandardData;
 
   return (
     <div className="hall-detail-container">
@@ -115,7 +130,7 @@ const HallDetail: React.FC = () => {
               },
               {
                 label: 'Standard Feed Consumption (kg)',
-                data: rossStandardData.map(data => data.feedConsumptionGram / 1000),
+                data: standardData.map(data => data.feedConsumptionGram / 1000),
                 borderColor: 'rgba(255,99,132,1)',
                 fill: false,
               }
@@ -135,7 +150,7 @@ const HallDetail: React.FC = () => {
               },
               {
                 label: 'Standard Water Consumption (liters)',
-                data: rossStandardData.map(data => data.waterConsumptionLiter),
+                data: standardData.map(data => data.waterConsumptionLiter),
                 borderColor: 'rgba(255,206,86,1)',
                 fill: false,
               }
@@ -155,7 +170,7 @@ const HallDetail: React.FC = () => {
               },
               {
                 label: 'Standard Average Weight (kg)',
-                data: rossStandardData.map(data => data.weightKg),
+                data: standardData.map(data => data.weightKg),
                 borderColor: 'rgba(75,192,192,1)',
                 fill: false,
               }
@@ -175,7 +190,7 @@ const HallDetail: React.FC = () => {
               },
               {
                 label: 'Standard Mortality',
-                data: rossStandardData.map(data => data.mortalityCount),
+                data: standardData.map(data => data.mortalityCount),
                 borderColor: 'rgba(255,159,64,1)',
                 fill: false,
               }
