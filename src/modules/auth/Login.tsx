@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import './Login.css';  // Import the CSS file
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState('');
@@ -17,8 +18,7 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
+    <div className="login-container"> 
       <form onSubmit={handleSubmit}>
         <div>
           <label>

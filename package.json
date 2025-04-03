@@ -21,6 +21,7 @@
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.4.1",
     "react-scripts": "5.0.1",
+    "sass": "^1.86.1",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4",
     "yup": "^1.6.1"
@@ -50,6 +51,7 @@
     ]
   },
   "devDependencies": {
-    "@types/react-chartjs-2": "^2.0.2"
+    "@types/react-chartjs-2": "^2.0.2",
+    "tailwindcss": "^4.1.0"
   }
 }

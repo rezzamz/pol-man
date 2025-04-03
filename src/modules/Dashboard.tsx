@@ -4,6 +4,7 @@ import Halls from './halls/Halls';
 import HallDetail from './halls/HallDetail';
 import Settings from './settings/Setting';
 import Revenue from './revenue/Revenue';
+import './Dashboard.css';
 
 const Dashboard: React.FC = () => {
   return (

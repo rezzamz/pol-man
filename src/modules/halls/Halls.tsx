@@ -26,7 +26,7 @@ const Halls: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="halls-container">
       <h2>My Halls</h2>
       <div className="card-box" onClick={showModal}>
         <div className="add-icon">+</div>

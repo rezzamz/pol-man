@@ -1,27 +1,47 @@
-.chart-container {
-    margin-top: 20px;
-    position: relative;
-    height: 200px;
-    width: 300px;
-  }
-  .day-navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .charts {
-    margin-top: 20px;
-  }
-  
-  .chart-container {
-    margin-top: 20px;
-    position: relative;
-    height: 200px;
-    width: 300px;
-  }
-  
-  .ant-input-group-addon {
-    color: #999;
-  }
+/* Container Styling */
+.hall-detail-container {
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+/* Day Navigation Styling */
+.day-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.day-navigation button {
+  background-color: #2575fc;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.day-navigation button:hover {
+  background-color: #6a11cb;
+}
+
+/* Calculated Fields Styling */
+.calculated-fields {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.calculated-fields h4 {
+  margin-top: 0;
+}
+
+/* Charts Styling */
+.charts {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
