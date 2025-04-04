@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Modal, Form, Input, Select } from 'antd';
+import { createHall } from '../../services/api';
 import './Halls.css';
 
 const { Option } = Select;
@@ -14,11 +15,15 @@ const Halls: React.FC = () => {
     setIsModalVisible(true);
   };
 
-  const handleOk = (values: any) => {
-    const newHall = { ...values, id: halls.length + 1 };
-    setHalls([...halls, newHall]);
-    setIsModalVisible(false);
-    navigate(`/dashboard/halls/${newHall.id}`, { state: { budgetType: values.budgetType } });
+  const handleOk = async (values: any) => {
+    try {
+      const newHall = await createHall(values);
+      setHalls([...halls, newHall]);
+      setIsModalVisible(false);
+      navigate(`/dashboard/halls/${newHall.id}`, { state: { budgetType: values.budgetType } });
+    } catch (error) {
+      console.error('Failed to create hall:', error);
+    }
   };
 
   const handleCancel = () => {
