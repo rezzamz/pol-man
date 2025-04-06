@@ -1,17 +1,25 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const { pathToRegexp, match, parse, compile } = require('path-to-regexp');
+require('dotenv').config(); // بارگذاری متغیرهای محیطی
 
 const app = express();
 const port = 5000;
 
+// تنظیمات دقیق‌تر CORS
+const corsOptions = {
+  origin: 'http://localhost:3000', // آدرس فرانت‌اند شما
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
+};
+
 // Middleware
-app.use(cors()); // فعال کردن CORS
+app.use(cors(corsOptions)); // استفاده از تنظیمات CORS سفارشی
 app.use(express.json()); // فعال کردن JSON parsing
 
 // MongoDB connection (Atlas)
-const uri = "mongodb+srv://rmkraty80:ua9uAp1bk3LPotz2@cluster0.vvqqpxz.mongodb.net/hallDB?retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
 mongoose.connect(uri).then(() => {
   console.log("Connected to MongoDB Atlas");
 }).catch(err => {
@@ -30,6 +38,8 @@ const hallSchema = new mongoose.Schema({
 const Hall = mongoose.model('Hall', hallSchema);
 
 // Routes
+app.options('/api/halls', cors(corsOptions)); // پاسخ به درخواست‌های preflight
+
 app.post('/api/halls', async (req, res) => {
   try {
     const newHall = new Hall(req.body);

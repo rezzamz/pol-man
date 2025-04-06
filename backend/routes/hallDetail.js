@@ -12,31 +12,40 @@ router.post('/create', async (req, res) => {
   }
 });
 
-router.get('/:hallId', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    const hallDetail = await HallDetail.findOne({ hallId: req.params.hallId });
-    if (!hallDetail) return res.status(404).json({ message: 'Hall detail not found' });
+    const hallDetails = await HallDetail.find();
+    res.json(hallDetails);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  try {
+    const hallDetail = await HallDetail.findById(req.params.id);
+    if (!hallDetail) return res.status(404).json({ message: 'HallDetail not found' });
     res.json(hallDetail);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-router.put('/:hallId', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const updatedHallDetail = await HallDetail.findOneAndUpdate({ hallId: req.params.hallId }, req.body, { new: true });
-    if (!updatedHallDetail) return res.status(404).json({ message: 'Hall detail not found' });
+    const updatedHallDetail = await HallDetail.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!updatedHallDetail) return res.status(404).json({ message: 'HallDetail not found' });
     res.json(updatedHallDetail);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
-router.delete('/:hallId', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
-    const deletedHallDetail = await HallDetail.findOneAndDelete({ hallId: req.params.hallId });
-    if (!deletedHallDetail) return res.status(404).json({ message: 'Hall detail not found' });
-    res.json({ message: 'Hall detail deleted successfully' });
+    const deletedHallDetail = await HallDetail.findByIdAndDelete(req.params.id);
+    if (!deletedHallDetail) return res.status(404).json({ message: 'HallDetail not found' });
+    res.json({ message: 'HallDetail deleted successfully' });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

@@ -1,8 +1,18 @@
 const mongoose = require('mongoose');
 
 const dataFormSchema = new mongoose.Schema({
-  hallId: { type: mongoose.Schema.Types.ObjectId, ref: 'Hall', required: true },
-  formData: { type: Object, required: true }
+  name: {
+    type: String,
+    required: true
+  },
+  age: {
+    type: Number,
+    required: true
+  },
+  type: {
+    type: String,
+    required: true
+  }
 });
 
 const DataForm = mongoose.model('DataForm', dataFormSchema);

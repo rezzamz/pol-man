@@ -6,7 +6,6 @@ const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*', // افزودن این هدر
   },
 });
 
@@ -59,14 +58,10 @@ export const updateHallDetail = async (id: string, data: unknown) => {
     throw error;
   }
 };
-const API_URL = 'http://localhost:5000/api';
+
 export const createHall = async (hallData: any) => {
   try {
-    const response = await axios.post(`${API_URL}/halls`, hallData, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const response = await api.post('/halls', hallData);
     return response.data;
   } catch (error) {
     console.error('Error creating hall:', error);
