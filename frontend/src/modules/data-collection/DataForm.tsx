@@ -1,7 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-
+import { createHall } from '../../services/api';
 const DataForm: React.FC = () => {
   const formik = useFormik({
     initialValues: {
@@ -15,24 +15,9 @@ const DataForm: React.FC = () => {
       type: Yup.string().required('Required'),
     }),
     onSubmit: async (values) => {
-      try {
-        const response = await fetch('http://localhost:5000/api/halls', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json', // تنظیم هدر Content-Type
-          },
-          body: JSON.stringify(values),
-        });
-
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const data = await response.json();
-        console.log(data);
-      } catch (error) {
-        console.error('Error:', error);
-      }
+      // Call the postData function to submit the form data
+      // await postData('/data', values);
+      console.log(values);
     },
   });
 

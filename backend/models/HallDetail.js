@@ -1,37 +1,34 @@
 const mongoose = require('mongoose');
+const Hall = require('./Hall');  // مدل سالن
 
-const hallDetailSchema = new mongoose.Schema({
+const dailyDataSchema = new mongoose.Schema({
   hallId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Hall',
+    ref: 'Hall',  // ارتباط با مدل Hall
     required: true
   },
-  dailyData: [
-    {
-      day: {
-        type: Number,
-        required: true
-      },
-      feedConsumption: {
-        type: Number,
-        required: true
-      },
-      waterConsumption: {
-        type: Number,
-        required: true
-      },
-      averageWeight: {
-        type: Number,
-        required: true
-      },
-      mortality: {
-        type: Number,
-        required: true
-      }
-    }
-  ]
+  day: {
+    type: Number,
+    required: true
+  },
+  feedConsumption: {
+    type: Number,
+    required: true
+  },
+  waterConsumption: {
+    type: Number,
+    required: true
+  },
+  averageWeight: {
+    type: Number,
+    required: true
+  },
+  mortality: {
+    type: Number,
+    required: true
+  }
 });
 
-const HallDetail = mongoose.model('HallDetail', hallDetailSchema);
+const DailyData = mongoose.model('DailyData', dailyDataSchema);
 
-module.exports = HallDetail;
+module.exports = DailyData;
