@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const hallController_1 = require("../controllers/hallController");
+const router = (0, express_1.Router)();
+router.get('/', hallController_1.getHalls);
+router.post('/', hallController_1.createHall);
+router.put('/:id', hallController_1.updateHall);
+router.delete('/:id', hallController_1.deleteHall);
+exports.default = router;
