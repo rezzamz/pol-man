@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
 import Halls from './halls/hall/Halls';
-import HallDetail from './halls/HallDetail/HallDetail';
+
 import Settings from './settings/Setting';
 import Revenue from './revenue/Revenue';
 import './Dashboard.css';
@@ -84,7 +84,7 @@ const Dashboard: React.FC = () => {
 
       <main className="content">
         <Routes>
-          <Route path="halls/:hallId" element={<HallDetail />} />
+
           <Route path="halls" element={<Halls />} />
           <Route path="settings" element={<Settings />} />
           <Route path="revenue" element={<Revenue />} />
